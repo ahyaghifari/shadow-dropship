@@ -1,0 +1,426 @@
+body{
+    background-image: url('../../src/bg/home-bg.png');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.2s all ease-in-out;
+    overflow-x: hidden;
+}
+
+body.modal-open{
+    height: 100vh;
+    position: absolute;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar{
+    background-color: transparent;
+    width: 12px;
+}
+
+
+::-webkit-scrollbar-thumb{
+    background-color: lightgray;
+}
+
+#nav-toggle{
+    z-index: 10;
+}
+
+#nav-list{
+    position: fixed;
+    backdrop-filter: blur(2px);
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    padding-bottom: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    a{
+        margin: 0 0 2vh 0;
+    }
+    .orders-nav{
+        margin-top: 2vh !important;
+    }
+    transform: translateY(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s all ease-in-out;
+    z-index: -1;
+}
+#nav-list.active{
+    transform: translateY(0);
+    opacity: 100%;
+    visibility: visible;
+    z-index: 9;
+}
+
+#nav-cart.animate{
+    animation: cart_anim 1s infinite;
+}
+
+@keyframes cart_anim {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.150);
+    }
+    99%{
+        transform: scale(1);
+    }
+}
+
+#product-detail{
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    z-index: -10;
+    visibility: hidden;
+    transition: 0.2s all ease-in-out;
+}
+
+#product-detail.active{
+    z-index: 11;
+    visibility: visible;
+}
+
+#product-addtocart-sizes{
+    input[type="radio"]{
+    -webkit-appearance: none;
+    }
+    label{
+        border: 1px solid #525252;
+        padding: 0.5rem;
+        cursor: pointer;
+        aspect-ratio: 1/1;
+        font-size: smaller;
+    }
+    input[type="radio"]:checked + label{
+        background-color: white;
+        color: rgb(50, 50, 50);
+    }
+}
+
+#qty, .qty-items{
+    background-color: transparent;
+    border: 1px solid lightgray;
+    border-radius: 0;
+    padding: 0.3rem;
+    width: fit-content;
+    &:active{
+        border: 1px solid lightgray;
+        outline: none;
+    }
+    &:focus{
+        outline: none;
+    }
+}
+
+
+#product-addtocart-quantity, .cart-items-actions{
+    input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+}
+
+#product-addtocart{
+    transform: translateY(100%);
+    z-index: -10;
+    transition: 0.3s all ease-in-out;
+    opacity: 0;
+}
+#product-addtocart.active{
+    transform: translateY(0);
+    z-index: 20;
+    opacity: 100%;
+}
+
+#checkout-form{
+    .checkout-form-components{
+        display: flex;
+        flex-direction: column;
+    }
+    label{
+        font-size: 12px;
+        margin-bottom: 1vh;
+    }
+ input, select{
+    background-color: transparent;
+    border: 1px solid lightgray;
+    width: fit-content;
+    font-size: 12px;
+    padding: 0.3rem;
+}   
+
+select{
+    background-color: transparent !important;
+    width: 100%;
+}
+option{
+    background-color: #525252;
+    padding: 0.3rem;
+}
+
+input:focus, input:active, input:hover{
+     border-radius: 0;
+    border: 1px solid lightgray;
+    outline: none;
+}
+}
+
+#login-container, #register-container{
+    background-color: transparent;
+    backdrop-filter: blur(2px);
+}
+
+
+
+.form-login-components,
+.form-register-components {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2vh;
+    input{
+        background-color: transparent;
+        border: 1px solid lightgray;
+        padding: 0.225rem;
+        width: 100%;
+    }
+    input:focus{
+        outline: none;
+    }
+}
+
+div.is-invalid{
+    font-size: 12px;
+    color: rgb(250, 60, 60);
+}
+
+#admin-allchats{
+    z-index: -10 !important;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: 0.3s all ease-in-out;
+}
+#admin-allchats.active{
+    z-index: 10 !important;
+    visibility: visible;
+    transform: translateX(0);
+ }
+
+#admin-allchat{
+    z-index: 10 !important;
+    transform: translateX(0);
+    visibility: visible;
+}
+
+#chat-box{
+    scroll-behavior: smooth;
+    background-color: transparent;
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+    height: 80%;
+    max-height: 80%;
+    gap: 3px;
+    width: 100%;
+    overflow-y: scroll;
+    margin: 0 auto 0 auto;
+    .chats{
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        max-width: 50%;
+        margin: 1vh 0;
+    }
+    .chats-username{
+        font-size: 11px;
+    }
+    .chats-time{
+        margin-top: 1px;
+        font-size: 10px;
+        opacity: 50%;
+    }
+    .sender{
+        align-items: flex-end;
+        align-self: flex-end;
+        text-align: right;
+        .chats-username{
+            text-align: right;
+        }
+        .chats-message{
+            background-color: #d4d4d4;
+        }
+    }
+    .receiver{
+        .chats-username{
+            text-align: left;
+        }
+        .chats-message{
+            background-color: #e5e5e5;
+        }
+    }
+    .chats-message{
+        padding: 3px;
+        width: fit-content;
+        font-size: 13px;
+        color: #262626;
+        border-radius: 4px;
+    }
+}
+
+#user-orders-filter{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    a{
+        word-break: keep-all;
+        white-space: nowrap;
+    }
+}
+
+#user-orders-filter::-webkit-scrollbar{
+    height: 6px;
+    background-color: #262626;
+}
+
+#nav-user-list{
+    z-index: -100;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: 0.3s all ease-in-out;
+}
+#nav-user-list.active{
+    z-index: 100;
+    visibility: visible;
+    opacity: 100%;
+    transform: translateX(0);
+}
+
+#form-changepassword{
+    div{
+        display: flex;
+        flex-direction: column;
+        margin: 1vh 0;
+    }
+    input{
+        background-color: transparent;
+        border: 1px solid lightgray;
+        padding: 0.2rem;
+        width: fit-content;
+    }
+    input:focus{
+        outline: none;
+    }
+}
+
+#form-changeprofile{
+    input{
+        background-color: transparent;
+        border: 1px solid lightgray;
+        padding: 0.2rem;
+        width: fit-content;
+    }
+    input:focus{
+        outline: none;
+    }
+
+}
+
+#chat-detail{
+    position: fixed;
+    transform: translateX(100%);
+    top: 0;
+    right: 0;
+    background-color: #262626;
+    z-index: 100;
+    padding: 8px;
+    opacity: 0;
+    transition: 0.3s all ease-in-out;
+}
+
+#chat-detail.active{
+    transform: translateX(0);
+    opacity: 100%;
+}
+#chat-detail.nonactive{
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+#orders-status-filter::-webkit-scrollbar{
+    height: 5px;
+}
+
+#orders-status-filter::-webkit-scrollbar-thumb{
+    background-color: #525252;
+}
+
+@media (min-width: 768px) {
+    nav{
+        background-color: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(3px);
+    }
+    #nav-list{
+        position: static;
+        align-items: flex-start;
+        backdrop-filter: none;
+        width: 60%;
+        flex-direction: row;
+        transform: translateY(0);
+        opacity: 100%;
+        justify-content: space-around;
+        visibility: visible;
+        z-index: 9;
+        padding-bottom: 0;
+        height: fit-content;
+        background-color: transparent;
+        a{
+            margin-bottom: 0;
+        }
+        .orders-nav{
+            margin-top: 0 !important;
+        }
+    }
+    #checkout-form {
+        label {
+            font-size: 14px;
+        }
+        input, select {
+            width: 80%;
+            font-size: 14px;
+        }
+        option{
+            font-size: 16px;
+        }
+    }
+    #chat-box{
+        .chats-username{
+            font-size: 13px;
+        }
+        .chats-message{
+            font-size: 15px;
+        }
+        .chats-time{
+            margin-top: 2px;
+            font-size: 12px;
+        }
+    }
+    #nav-user-list{
+        z-index: 100;
+        visibility: visible;
+        opacity: 100%;
+        transform: translateX(0);
+    }
+    #admin-allchats{
+        z-index: 10 !important;
+        visibility: visible;
+        transform: translateX(0);
+    }
+}

@@ -1,0 +1,56 @@
+body {
+  scroll-behavior: smooth;
+}
+
+#admin-sidebar {
+  z-index: -10 !important;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: 0.3s all ease-in-out;
+}
+
+#admin-sidebar.active {
+  z-index: 10 !important;
+  visibility: visible;
+  opacity: 100%;
+  transform: translateX(0);
+}
+
+input[type=text], input[type=number], input[type=password], textarea {
+  background-color: transparent;
+  border: 1px solid rgb(18, 18, 18);
+  padding: 0.125rem;
+}
+
+textarea {
+  padding: 10px;
+}
+
+input:focus, textarea:focus, select::after {
+  outline: none;
+}
+
+.slug-input {
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+          user-select: none !important;
+}
+
+#user-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+#user-container::-webkit-scrollbar-thumb {
+  background-color: rgb(170, 170, 170);
+  border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+  #admin-sidebar {
+    z-index: 10 !important;
+    visibility: visible;
+    opacity: 100%;
+    transform: translateX(0);
+  }
+}/*# sourceMappingURL=style.css.map */
